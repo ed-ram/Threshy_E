@@ -50,7 +50,7 @@ const clickHandler = () => {
 
 const colors = {
     back: ['#2C3A47', '#CAD3C8', '#070a36', '#0f19a9'],
-    entities: ['rgb(12,6,6)', 'white']
+    entities: ['rgba(12,6,6,0.7)', 'rgba(255,255,255,0.8']
 };
 
 const drawRect = (color,x,y,w,h) => {
