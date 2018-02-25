@@ -197,4 +197,4 @@ window.addEventListener('mousemove',
   mouse.y = event.y;
 });
 
-window.addEventListener('click', clickHandler)
+canvas.addEventListener('click', clickHandler) /* important to add this to the canvas specifically. attaching to the window will work on desktop but not mobile */
