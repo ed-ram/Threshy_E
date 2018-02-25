@@ -14,7 +14,7 @@
 p {
 	/*display: none;*/
 	margin-top: 1em;
-	background-color: black;
+	/*background-color: black;*/
 	color: white;
 }
 
@@ -23,7 +23,7 @@ canvas {
 	position:fixed;
 	top: 0;
 	left: 0;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 
 
@@ -51,9 +51,9 @@ a:active {
 
 .nav, .mail {
     width: 100%;
-    background-color: rgb(6, 6, 6);
-	color: rgb(255, 254, 254);	
-    padding-left:10px;
+    background-color: rgba(12,6,6,0.9);
+	color: rgba(255,255,255,0.8);	
+    /*padding-left:10px;*/
     position: fixed;
     top: 20px;
     font-family: 'Rajdhani', sans-serif;
@@ -67,3 +67,4 @@ a:active {
     top: 0;
     font-family: 'Rajdhani', sans-serif;
 }
+
