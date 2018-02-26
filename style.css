@@ -25,7 +25,14 @@ canvas {
 	/*border: 1px solid black;*/
 }
 
-
+.navShow {
+    visibility: hidden;
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    width: 50px;
+    height: 50px;    
+}
 
 a:-webkit-any-link, a:link, a:visited  {
     text-decoration: none;
@@ -69,7 +76,7 @@ a:active {
     letter-spacing: 1em;
 }
 
-@media only screen /* phonesies */
+@media only screen /* iphone */
   and (min-device-width: 300px) 
   and (max-device-width: 599px)
   and (-webkit-min-device-pixel-ratio: 2)
@@ -85,6 +92,35 @@ a:active {
         top: 0;
         font-family: 'Rajdhani', sans-serif;
         font-size: 4em;
+        letter-spacing: 0em;
+    }
+    .nav, .mail {
+        width: 100%;
+        background-color: rgba(12,6,6,0.9);
+        color: rgba(251, 255, 233, 0.8);	
+        /*padding-left:10px;*/
+        position: fixed;
+        top: 20px;
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 2em;
+    }
+}
+
+@media only screen /* small screen unknown pixel ratio */
+  and (min-device-width: 300px) 
+  and (max-device-width: 599px)
+  and (orientation: portrait) {
+    h1, h2, h3, h4, h5, h6 { 
+        font-weight: normal;
+    }        
+    .title {
+        width: 100%;
+        background-color: rgba(12,6,6,0.7);
+        color: rgba(251, 255, 233, 0.8);
+        position: fixed;
+        top: 0;
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 3em;
         letter-spacing: 0em;
     }
     .nav, .mail {

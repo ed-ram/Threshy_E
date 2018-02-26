@@ -4,8 +4,6 @@ const ctx=canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-
-
 function drawMouseCoordinates(){
     ctx.strokeStyle='black';
     ctx.font='20px Verdana';
@@ -16,6 +14,8 @@ let nav = document.getElementById('nav');
 nav.style.visibility='hidden';
 let mail = document.getElementById('mail');
 mail.style.visibility='hidden';
+
+
 
 /*----- variables -------*/
 let counter = 0;
@@ -71,11 +71,17 @@ const expandoRect = (x,y) => {
 const flickerBackground = (color1,color2,x,y,w,h) => {
     switch(on){
         case true:
-        ctx.fillStyle=color1;
+        let gradient = ctx.createRadialGradient(canvas.width, 0, canvas.width*0.5,canvas.width, 0, canvas.width)
+        gradient.addColorStop(0,color2);
+        gradient.addColorStop(1, color1);
+        ctx.fillStyle=gradient;
         ctx.fillRect(x,y,w,h);
         break;
         case false:
-        ctx.fillStyle=color2;
+        let gradient2 = ctx.createRadialGradient(canvas.width, 0, canvas.width*0.2,canvas.width, 0, canvas.width)
+        gradient2.addColorStop(0,color2);
+        gradient2.addColorStop(1, color1);
+        ctx.fillStyle=gradient2;
         ctx.fillRect(x,y,w,h);
         break;
         default:
@@ -85,7 +91,7 @@ const flickerBackground = (color1,color2,x,y,w,h) => {
 }
 
 const flicker = (threshold) => {
-    r = Math.random();
+    let r = Math.random();
     if(r<threshold){
         on = !on;
         return;
@@ -152,6 +158,18 @@ let coordinates = {
     obj2:{x:canvas.width*0.67, y:canvas.height*0.68},
 }
 
+const positionElement = (id,x,y,) => {
+    let _x = x;
+    let _y = y;
+    let element = document.getElementById(id);
+    console.log(element);
+    element.style.top = y.toString()+'px';
+    console.log('positioning element'+element+'at y:'+y);
+    element.style.left = x.toString()+'px';
+    console.log('positioning element'+element+'at x:'+x);
+
+}
+
 function init(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -161,6 +179,10 @@ function init(){
     entityIterations = [];
     entityIterations.push(new Entity(colors.entities[0],coordinates.obj1.x, coordinates.obj1.y,coordinates.blockSize), 
     new Entity(colors.entities[1],coordinates.obj2.x, coordinates.obj2.y,coordinates.blockSize));
+    positionElement('navShow',coordinates.obj1.x - coordinates.blockSize*0.5,coordinates.obj1.y);
+    /*let navShow= document.getElementById('navShow');
+    let y = coordinates.obj1.y;
+    navShow.style.top = position.toString()+'px';*/
 }
 
 /*--- animation control ----*/
@@ -168,7 +190,7 @@ function update(){
     //counter = (counter+1)%100;
     //console.log(counter);
     //ctx.clearRect(0,0,canvas.width,canvas.height);
-    flicker(0.1); 
+    flicker(0.03); 
     flickerBackground(colors.back[0],colors.back[1],0,0,canvas.width,canvas.height);    
     for (var i=0; i<entityIterations.length; i++){
         entityIterations[i].update();
